@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail View</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+    <style>
+        .detail-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            font-size: 16px;
+        }
+        .detail-header {
+            display: flex;
+            gap: 20px;
+        }
+        .detail-header img {
+            width: 240px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .detail-info {
+            flex: 1;
+        }
+        .detail-info h2 {
+            margin-top: 0;
+        }
+        .button-group {
+            margin-top: 16px;
+        }
+        .button-group select,
+        .button-group button {
+            margin-right: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-status { background: #2e51a2; color: white; }
+        .btn-fav { background: #eab308; color: white; }
+    </style>
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<div class="detail-container">
+    <div class="detail-header">
+        <img id="detail-image" src="" alt="Cover">
+        <div class="detail-info">
+            <h2 id="detail-title"></h2>
+            <p id="detail-desc"></p>
+
+            <div id="detail-extra"></div>
+
+            <div class="button-group">
+                <select id="status-select">
+                    <option value="">Choose Status</option>
+                </select>
+
+                <button class="btn-status" id="btn-update-status">Update Status</button>
+                <button class="btn-fav" id="btn-favorite">Add to Favorites</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script>
+    /* Load navbar & footer */
+    fetch("/components/navbar.html").then(r => r.text()).then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+    });
+    fetch("/components/footer.html").then(r => r.text()).then(html => {
+        document.getElementById("footer-container").innerHTML = html;
+    });
+
+    /* Read parameters */
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const id = params.get("id");
+
+    /* Validate */
+    if (!category || !id) {
+        document.querySelector(".detail-container").innerHTML = "<p>No item selected</p>";
+    } else {
+        fetchItem();
+    }
+
+    function fetchItem() {
+        fetch(`/api/v1/media?category=${category}&id=${id}`)
+            .then(res => res.json())
+            .then(item => {
+                renderDetail(item);
+                setupStatusOptions(item.category);
+            })
+            .catch(err => {
+                console.error(err);
+                document.querySelector(".detail-container").innerHTML = "<p>Error loading item.</p>";
+            });
+    }
+
+    function renderDetail(item) {
+        document.getElementById("detail-image").src = item.image || "";
+        document.getElementById("detail-title").textContent = item.title || "";
+        document.getElementById("detail-desc").textContent = item.description || "";
+
+        const extra = document.getElementById("detail-extra");
+        extra.innerHTML = "";
+
+        if (item.category === "movies" || item.category === "series") {
+            extra.innerHTML += `<p><strong>Score:</strong> ${item.score || "N/A"}</p>`;
+        }
+        if (item.category === "anime") {
+            extra.innerHTML += `<p><strong>Episodes:</strong> ${item.episodes || "N/A"}</p>`;
+            extra.innerHTML += `<p><strong>Score:</strong> ${item.score || "N/A"}</p>`;
+        }
+    }
+
+    function setupStatusOptions(cat) {
+        const statusSelect = document.getElementById("status-select");
+        statusSelect.innerHTML = `<option value="">Choose Status</option>`;
+        let options = [];
+
+        switch (cat) {
+            case "anime":
+                options = ["Watching","Completed","On-Hold","Dropped","Plan to Watch"];
+                break;
+            case "manga":
+            case "comics":
+            case "novels":
+                options = ["Reading","Completed","On-Hold","Dropped","Plan to Read"];
+                break;
+            case "games":
+                options = ["Playing","Completed","On-Hold","Dropped","Plan to Play"];
+                break;
+            case "movies":  // Your custom statuses
+                options = ["Watching","Completed","On-Hold","Dropped","Plan to Watch"];
+                break;
+            case "series":
+                options = ["Watching","Completed","On-Hold","Dropped","Plan to Watch"];
+                break;
+        }
+
+        options.forEach(opt => {
+            const el = document.createElement("option");
+            el.value = opt;
+            el.textContent = opt;
+            statusSelect.appendChild(el);
+        });
+    }
+
+    /* Update status */
+    document.getElementById("btn-update-status").addEventListener("click", () => {
+        const status = document.getElementById("status-select").value;
+        if (!status) return alert("Choose a status.");
+
+        updateField("status", status);
+    });
+
+    /* Add to favorites */
+    document.getElementById("btn-favorite").addEventListener("click", () => {
+        updateField("favorite", true);
+    });
+
+    function updateField(field, value) {
+        fetch("/api/v1/media/update", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                category,
+                id: parseInt(id),
+                field,
+                value
+            })
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Update failed");
+            return res.json();
+        })
+        .then(resp => alert("Update successful"))
+        .catch(err => alert("Error updating"));
+    }
+</script>
+
+</body>
+</html>
