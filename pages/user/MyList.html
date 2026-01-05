@@ -1,34 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/navbar.css">
+  <meta charset="UTF-8" />
+  <title>MyList</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 20px;
+    }
 
-    
-    <title>Document</title>
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .tabs li {
+      padding: 8px 14px;
+      background: #e4e6eb;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .tabs li.active {
+      background: #2e51a2;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #fafafa;
+    }
+
+    select {
+      padding: 4px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .cover {
+  width: 45px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+  </style>
 </head>
+
 <body>
 
+<h1 id="page-title"></h1>
 
-    <nav>
-
-
-<ul>
-
-<li><a href="">All </a></li>
-<li><a href="">Currently</a></li>
-<li><a href="">Completed</a></li>
-<li><a href="">On hold</a></li>
-<li><a href="">Dropped</a></li>
-<li><a href="">Want to watch</a></li>
-
-
-
+<ul class="tabs">
+  <li class="active" id="tab-current"></li>
+  <li>Completed</li>
+  <li>On Hold</li>
+  <li>Dropped</li>
+  <li id="tab-plan"></li>
 </ul>
 
-    </nav>
-    
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th id="progress-header"></th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="list-body"></tbody>
+</table>
+
+<script>
+/* ================= CATEGORY CONFIG ================= */
+
+const CATEGORY_CONFIG = {
+  movie: {
+    label: "Watching",
+    progressLabel: "Minutes",
+    unit: "min",
+    field: "duration"
+  },
+  serie: {
+    label: "Watching",
+    progressLabel: "Episodes",
+    unit: "ep",
+    field: "episodes"
+  },
+  anime: {
+    label: "Watching",
+    progressLabel: "Episodes",
+    unit: "ep",
+    field: "episodes"
+  },
+  manga: {
+    label: "Reading",
+    progressLabel: "Chapters",
+    unit: "ch",
+    field: "chapters"
+  },
+  comics: {
+    label: "Reading",
+    progressLabel: "Chapters",
+    unit: "chapters",
+    field: "chapters"
+  },
+  novel: {
+    label: "Reading",
+    progressLabel: "Pages",
+    unit: "pg",
+    field: "pages"
+  },
+  game: {
+    label: "Playing",
+    progressLabel: "Hours",
+    unit: "h",
+    field: "hours"
+  }
+};
+
+/* ================= READ CATEGORY ================= */
+
+const params = new URLSearchParams(window.location.search);
+const category = params.get("category");
+
+if (!CATEGORY_CONFIG[category]) {
+  document.body.innerHTML = "<h2>Invalid category</h2>";
+  throw new Error("Invalid category");
+}
+
+const config = CATEGORY_CONFIG[category];
+
+/* ================= UPDATE UI ================= */
+
+document.getElementById("page-title").textContent =
+  category.charAt(0).toUpperCase() + category.slice(1);
+
+document.getElementById("tab-current").textContent = config.label;
+document.getElementById("tab-plan").textContent = "Plan to " + config.label;
+document.getElementById("progress-header").textContent = config.progressLabel;
+
+/* ================= MOCK DATA (REPLACE WITH JSON LATER) ================= */
+
+const DATA = [
+  { id: 1,index:1, image: "https://picsum.photos/seed/book1/88/124",  title: "Item One", status: config.label, duration: 120, episodes: 10, chapters: 50, pages: 300, hours: 20 },
+  { id: 2,index:2, image: "https://picsum.photos/seed/book1/88/124", title: "Item Two", status: "Completed", duration: 90, episodes: 24, chapters: 120, pages: 500, hours: 60 }
+];
+
+/* ================= RENDER TABLE ================= */
+
+const tbody = document.getElementById("list-body");
+
+function render() {
+  tbody.innerHTML = "";
+
+  DATA.forEach((item, index) => {
+    const value = item[config.field] ?? "-";
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${index + 1}</td>
+      <td>
+        <img src="${item.image}" alt="${item.title}" class="cover">
+      </td>
+      <td>${item.title}</td>
+      <td>${value} ${config.unit}</td>
+      <td>
+        <select>
+          <option ${item.status === config.label ? "selected" : ""}>${config.label}</option>
+          <option ${item.status === "Completed" ? "selected" : ""}>Completed</option>
+          <option ${item.status === "On Hold" ? "selected" : ""}>On Hold</option>
+          <option ${item.status === "Dropped" ? "selected" : ""}>Dropped</option>
+          <option>Plan to ${config.label}</option>
+        </select>
+      </td>
+      <td class="actions">
+        <a href="detail.html?category=${category}&id=${item.id}">↗</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+
+render();
+</script>
+
 </body>
 </html>
