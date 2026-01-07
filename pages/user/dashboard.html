@@ -7,7 +7,16 @@
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/navbar.css">
 <link rel="stylesheet" href="/assets/css/footer.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
+<style>
+
+
+  #list-view {
+  grid-column: 1 / -1;
+}
+
+</style>
 
 </head>
 <body>
@@ -25,13 +34,14 @@
 
     <ul class="profile-menu">
      
-      <li><a href="MyList.html?category=movies"><button class="menu-btn active">Movies List</button></a></li>
-      <li><a href="MyList.html?category=series"><button class="menu-btn active">Series List</button></a></li>
-      <li><a href="MyList.html?category=animes"><button class="menu-btn active">Anime List</button></a></li>
-      <li><a href="MyList.html?category=mangas"><button class="menu-btn active">Manga List</button></a></li>
-      <li><a href="MyList.html?category=comics"><button class="menu-btn active">Comics List</button></a></li>
-      <li><a href="MyList.html?category=novels"><button class="menu-btn active">Novels List</button></a></li>
-      <li><a href="MyList.html?category=games"><button class="menu-btn active">Games List</button></a></li>
+      <li><a href="MyList.html?category=movies" onclick="openList(event, 'movies')"><button class="menu-btn active">Movies List</button></a></li>
+      <li><a href="MyList.html?category=series" onclick="openList(event, 'series')"><button class="menu-btn active">Series List</button></a></li>
+      <li><a href="MyList.html?category=animes" onclick="openList(event, 'animes')"><button class="menu-btn active">Anime List</button></a></li>
+      <li><a href="MyList.html?category=mangas" onclick="openList(event, 'mangas')"><button class="menu-btn active">Manga List</button></a></li>
+      <li><a href="MyList.html?category=comics" onclick="openList(event, 'comics')"><button class="menu-btn active">Comics List</button></a></li>
+      <li><a href="MyList.html?category=novels" onclick="openList(event, 'novels')"><button class="menu-btn active">Novels List</button></a></li>
+      <li><a href="MyList.html?category=games"  onclick="openList(event, 'games')"><button class="menu-btn active">Games List</button></a></li>
+      <li><a href="#" onclick="showDashboard(); return false;"><button class="menu-btn active">Dashboard</button></a></li>
       <li><a href="MyList.html?category="><button class="menu-btn active">Statistics</button></a></li>
       <li><a href="MyList.html?category="><button class="menu-btn active">History</button></a></li>
       <li><a href="MyList.html?category="><button class="menu-btn active">Favorites</button></a></li>
@@ -235,6 +245,16 @@
   </div>
 </div>
 
+
+
+<!-- ================= LIST VIEW (HIDDEN) ================= -->
+<div id="list-view" style="display:none;">
+  <iframe
+    id="list-frame"
+    style="width:100%; height:85vh; border:none;">
+  </iframe>
+</div>
+
 </section>
 
 
@@ -255,6 +275,42 @@ fetch("/components/footer.html")
   .then(html => {
     document.getElementById("footer-container").innerHTML = html;
   });
+</script>
+
+<script>
+function openList(event, category) {
+  event.preventDefault();
+
+  // hide all dashboard stats cards
+  document
+    .querySelectorAll(".stats-card")
+    .forEach(card => card.style.display = "none");
+
+  // show list view
+  document.getElementById("list-view").style.display = "block";
+
+  // load list
+  document.getElementById("list-frame").src =
+    "MyList.html?category=" + category;
+}
+
+
+
+
+</script>
+<script>
+function showDashboard() {
+  // show all stats cards again
+  document
+    .querySelectorAll(".stats-card")
+    .forEach(card => card.style.display = "block");
+
+  // hide list
+  document.getElementById("list-view").style.display = "none";
+
+  // reset iframe
+  document.getElementById("list-frame").src = "";
+}
 </script>
 
 

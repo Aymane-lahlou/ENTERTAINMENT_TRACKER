@@ -1,0 +1,78 @@
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .tabs li {
+      padding: 8px 14px;
+      background: #e4e6eb;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .tabs li.active {
+      background: #2e51a2;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #fafafa;
+    }
+
+    select {
+      padding: 4px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .cover {
+  width: 45px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.list-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
