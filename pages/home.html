@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Media Library</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/navbar.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+
+  <div class="container">
+
+    <!-- ===== MOVIES ===== -->
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Movies</h2>
+
+      </div>
+      <div class="media-row" data-count="20"></div>
+    </section>
+
+    <!-- ===== SERIES ===== -->
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Series</h2>
+
+      </div>
+      <div class="media-row" data-count="20"></div>
+    </section>
+
+    <!-- ===== ANIMES ===== -->
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Animes</h2>
+
+      </div>
+      <div class="media-row" data-count="20"></div>
+    </section>
+
+    <!-- ===== MANGA ===== -->
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Manga</h2>
+
+      </div>
+      <div class="media-row" data-count="20"></div>
+    </section>
+
+
+
+    <!-- ===== NOVELS ===== -->
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Novels</h2>
+
+      </div>
+      <div class="media-row" data-count="20"></div>
+    </section>
+
+    <!-- ===== GAMES ===== -->
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Games</h2>
+
+      </div>
+      <div class="media-row" data-count="20"></div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+
+
+  <script src="/assets/js/app.js"></script>
+  <script>
+    // Navbar/Footer Loading
+    fetch("/components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+        if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+
+        // Handle Search Params from Redirect
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTypeParam = urlParams.get('search_type');
+        const searchQueryParam = urlParams.get('search_query');
+
+        if (searchTypeParam && searchQueryParam) {
+          // Wait for elements to exist
+          const checkNav = setInterval(() => {
+            const tEl = document.getElementById('navSearchType');
+            const qEl = document.getElementById('navSearchQuery');
+            if (tEl && qEl) {
+              clearInterval(checkNav);
+              tEl.value = searchTypeParam;
+              qEl.value = searchQueryParam;
+              if (window.searchMedia) window.searchMedia();
+            }
+          }, 100);
+        }
+      });
+
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footer-container").innerHTML = html);
+
+    // Dashboard Logic (Community Favorites Only)
+    window.loadDashboard = async function () {
+      try {
+        const sections = [
+          { id: 'movies', title: 'Movies' },
+          { id: 'series', title: 'Series' },
+          { id: 'animes', title: 'Animes' },
+          { id: 'manga', title: 'Manga' },
+          { id: 'novels', title: 'Novels' },
+          { id: 'games', title: 'Games' }
+        ];
+
+        for (const sec of sections) {
+          const headers = Array.from(document.querySelectorAll('.section-header h2'));
+          const header = headers.find(h => h.innerText.toLowerCase().includes(sec.title.toLowerCase()));
+
+          if (header) {
+            const section = header.closest('.media-section');
+            const row = section.querySelector('.media-row');
+
+            // Set ID for trending loader
+            row.id = `row-${sec.id}`;
+
+            // Update Header
+            header.innerText = `${sec.title} (Community Favorites)`;
+
+            // Load Trending
+            await loadTrending(sec.id, `row-${sec.id}`);
+          }
+        }
+
+      } catch (e) {
+        console.error('Error loading dashboard:', e);
+      }
+    }
+
+    // Initial Load
+    loadDashboard();
+
+  </script>
+
+</body>
+
+</html>

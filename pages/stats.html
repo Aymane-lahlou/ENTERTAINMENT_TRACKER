@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Stats - Entertainment Tracker</title>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <style>
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chart-wrapper {
+            background: #333;
+            color: #fff;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            width: 45%;
+            min-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-top: 20px;">My Library Statistics</h1>
+
+        <div class="stats-container">
+            <div class="chart-wrapper">
+                <h2>Media Distribution</h2>
+                <canvas id="typeChart"></canvas>
+            </div>
+            <div class="chart-wrapper">
+                <h2>Status Distribution</h2>
+                <canvas id="statusChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../chart.umd.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <!-- Navbar/Footer Loader -->
+    <script>
+        fetch("/components/navbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("navbar-container").innerHTML = html;
+
+                // Highlight active link
+                // We do this after loading navbar
+                const links = document.querySelectorAll('.nav-links a');
+                links.forEach(l => l.classList.remove('active'));
+                const statsLink = Array.from(links).find(l => l.innerText === 'Stats');
+                if (statsLink) statsLink.classList.add('active');
+
+                // Bind updated navbar interactions (logout, search, etc)
+                if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+            });
+
+        fetch("/components/footer.html")
+            .then(res => res.text())
+            .then(html => document.getElementById("footer-container").innerHTML = html);
+    </script>
+    <script src="/assets/js/stats.js"></script>
+</body>
+
+</html>

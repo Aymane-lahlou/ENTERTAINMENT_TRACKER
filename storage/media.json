@@ -1,0 +1,93 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Inception",
+      "description": "A thief who steals corporate secrets through dream-sharing technology.",
+      "year": 2010,
+      "duration_minutes": 148,
+      "genre": ["Sci-Fi", "Thriller"],
+      "director": "Christopher Nolan",
+      "image": "/images/movies/inception.jpg",
+      "score": 8.8
+    }
+  ],
+
+  "series": [
+    {
+      "id": 1,
+      "title": "Breaking Bad",
+      "description": "A chemistry teacher turned meth producer.",
+      "seasons": 5,
+      "episodes": 62,
+      "genre": ["Drama", "Crime"],
+      "image": "/images/series/breaking_bad.jpg",
+      "score": 9.5
+    }
+  ],
+
+  "animes": [
+    {
+      "id": 1,
+      "title": "Attack on Titan",
+      "description": "Humanity fights for survival against giant humanoid Titans.",
+      "episodes": 75,
+      "studio": "MAPPA",
+      "genre": ["Action", "Drama"],
+      "image": "/images/animes/aot.jpg",
+      "score": 9.0
+    }
+  ],
+
+  "manga": [
+    {
+      "id": 1,
+      "title": "Berserk",
+      "description": "A dark fantasy tale of revenge and fate.",
+      "volumes": 41,
+      "chapters": 370,
+      "author": "Kentaro Miura",
+      "genre": ["Dark Fantasy"],
+      "image": "/images/manga/berserk.jpg"
+    }
+  ],
+
+  "comics": [
+    {
+      "id": 1,
+      "title": "Batman: Year One",
+      "description": "Bruce Wayne's first year as Batman.",
+      "volumes": 1,
+      "publisher": "DC",
+      "author": "Frank Miller",
+      "genre": ["Superhero"],
+      "image": "/images/comics/batman_year_one.jpg"
+    }
+  ],
+
+  "novels": [
+    {
+      "id": 1,
+      "title": "1984",
+      "description": "A dystopian novel about totalitarian surveillance.",
+      "author": "George Orwell",
+      "pages": 328,
+      "genre": ["Dystopian"],
+      "image": "/images/novels/1984.jpg"
+    }
+  ],
+
+  "games": [
+    {
+      "id": 1,
+      "title": "The Witcher 3",
+      "description": "An open-world RPG set in a dark fantasy universe.",
+      "platforms": ["PC", "PS", "Xbox"],
+      "developer": "CD Projekt Red",
+      "hours_to_complete": 50,
+      "genre": ["RPG"],
+      "image": "/images/games/witcher3.jpg",
+      "score": 9.6
+    }
+  ]
+}

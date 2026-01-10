@@ -1,0 +1,557 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "jawad",
+      "email": "jawad@example.com",
+      "password_hash": "$2b$10$xxxxxxxxxxxxxxxx",
+      "profile_picture": "/storage/profiles pictures/homelande.jpg",
+      "created_at": "2026-01-01T12:00:00Z",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768045570042,
+      "username": "tester",
+      "email": "tester@test.com",
+      "password_hash": "$2a$10$dGFwR3iV2pA4BAVW.oFGEO.oiYHCOAkYo/.87nhmviD0ePLfdIAd6",
+      "created_at": "2026-01-10T11:46:10.042Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768045815810,
+      "username": "testuser",
+      "email": "testuser_1736506400@test.com",
+      "password_hash": "$2a$10$ZC/4qbg/LNt8bpP5zAWmbezD3OzeV60pdGICUVpEcllaI/Jdt8z1i",
+      "created_at": "2026-01-10T11:50:15.810Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": [
+            {
+              "id": 53962,
+              "title": "Gimmick!",
+              "image": "https://media.rawg.io/media/screenshots/beb/beb43b7bc8dc461f4bb8707467473ead.jpg",
+              "description": null,
+              "type": "game",
+              "score": 4.83,
+              "added_at": "2026-01-10T14:36:16.548Z"
+            },
+            {
+              "id": 53594,
+              "title": "Super Robot Taisen: Original Generation",
+              "image": "https://media.rawg.io/media/games/d34/d34853b4f14debc1734a74584bc63d20.jpg",
+              "description": null,
+              "type": "game",
+              "score": 4.83,
+              "added_at": "2026-01-10T14:36:18.189Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 1768046225060,
+      "username": "sekicamoh",
+      "email": "siwof@mailinator.com",
+      "password_hash": "$2a$10$daGAZihsFP1Riu4lax3ISeHEA1KdwLC0SFcS9VNEdhRq5uAIqCF9O",
+      "created_at": "2026-01-10T11:57:05.061Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768046242011,
+      "username": "siwo@mailinator.com",
+      "email": "siwo@mailinator.com",
+      "password_hash": "$2a$10$we4ZNJ4xYUR2mOzZnkZbA.lTLEC4eD2wwQO6Wc6kD.UV7qUeoVJZi",
+      "created_at": "2026-01-10T11:57:22.011Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768056117909,
+      "username": "elf_slayer",
+      "email": "elf_slayer@elfslayer.elfslayer",
+      "password_hash": "$2a$10$NB2EwwhLQQ4w.2/g3Lhoi.zLpxFMkPHXC8vpGOA0DdSaGoOOtkkiy",
+      "created_at": "2026-01-10T14:41:57.909Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768056264079,
+      "username": "verifier",
+      "email": "verifier@test.com",
+      "password_hash": "$2a$10$.orhF7Q7lsaomSWj6oLfBOjQv3fb2.ILtHOEX0BXxmcItIehnzPtO",
+      "created_at": "2026-01-10T14:44:24.079Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768056404725,
+      "username": "verifiernii",
+      "email": "testuser_17306400@test.com",
+      "password_hash": "$2a$10$YGEWsKtYk0I3JdZiMV8dsedZ5hWEJGv1wIDy5G2J.Lzh6jc3AMgM2",
+      "created_at": "2026-01-10T14:46:44.725Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": [
+            {
+              "id": 1252037,
+              "title": "The Tank",
+              "image": "https://image.tmdb.org/t/p/w500/65Jr1JAgWlu9em8zHhAfrNJJQBt.jpg",
+              "description": "A German Tiger tank crew is sent on a dangerous mission to rescue the missing officer Paul von Hardenburg from a top-secret bunker behind enemy lines. As they make their way through the lethal no-man's land, they must confront not only the enemy, but also their own fears and inner demons. Fueled by the Wehrmacht's methamphetamine, their mission increasingly becomes a journey into the heart of darkness.",
+              "type": "movie",
+              "score": 7.133,
+              "added_at": "2026-01-10T14:47:06.784Z"
+            }
+          ]
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": [
+            {
+              "id": 9253,
+              "title": "Steins;Gate",
+              "image": "https://cdn.myanimelist.net/images/anime/1935/127974.jpg",
+              "description": "Eccentric scientist Rintarou Okabe has a never-ending thirst for scientific exploration. Together with his ditzy but well-meaning friend Mayuri Shiina and his roommate Itaru Hashida, Okabe founds the Future Gadget Laboratory in the hopes of creating technological innovations that baffle the human psyche. Despite claims of grandeur, the only notable \"gadget\" the trio have created is a microwave that has the mystifying power to turn bananas into green goo.\n\nHowever, when Okabe attends a conference on time travel, he experiences a series of strange events that lead him to believe that there is more to the \"Phone Microwave\" gadget than meets the eye. Apparently able to send text messages into the past using the microwave, Okabe dabbles further with the \"time machine,\" attracting the ire and attention of the mysterious organization SERN.\n\nDue to the novel discovery, Okabe and his friends find themselves in an ever-present danger. As he works to mitigate the damage his invention has caused to the timeline, Okabe fights a battle to not only save his loved ones but also to preserve his degrading sanity.\n\n[Written by MAL Rewrite]",
+              "type": "anime",
+              "score": 9.07,
+              "added_at": "2026-01-10T14:47:22.849Z"
+            }
+          ]
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_play": []
+        }
+      }
+    },
+    {
+      "id": 1768062043366,
+      "username": "xobah86008@ploncy.com",
+      "email": "xobah86008@ploncy.com",
+      "password_hash": "$2a$10$aQIWAraEjsexkMcOLF59iOM7f2vYpEY/zVxARssbrQ.D/YvWi1/Lm",
+      "created_at": "2026-01-10T16:20:43.366Z",
+      "profile_picture": "/assets/default_profile.png",
+      "lists": {
+        "movies": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [
+            {
+              "id": 83533,
+              "title": "Avatar: Fire and Ash",
+              "image": "https://image.tmdb.org/t/p/w500/cf7hE1ifY4UNbS25tGnaTyyDrI2.jpg",
+              "description": "In the wake of the devastating war against the RDA and the loss of their eldest son, Jake Sully and Neytiri face a new threat on Pandora: the Ash People, a violent and power-hungry Na'vi tribe led by the ruthless Varang. Jake's family must fight for their survival and the future of Pandora in a conflict that pushes them to their emotional and physical limits.",
+              "type": "movie",
+              "score": 7.354,
+              "added_at": "2026-01-10T16:30:06.676Z"
+            }
+          ],
+          "plan_to_watch": [
+            {
+              "id": 1084242,
+              "title": "Zootopia 2",
+              "image": "https://image.tmdb.org/t/p/w500/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
+              "description": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
+              "type": "movie",
+              "score": 7.585,
+              "added_at": "2026-01-10T16:20:53.344Z"
+            }
+          ]
+        },
+        "series": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "animes": {
+          "watching": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_watch": []
+        },
+        "manga": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "novels": {
+          "reading": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [],
+          "plan_to_read": []
+        },
+        "games": {
+          "playing": [],
+          "completed": [],
+          "on_hold": [],
+          "dropped": [
+            {
+              "id": 974923,
+              "title": "Winter Memories",
+              "image": "https://media.rawg.io/media/screenshots/326/326267a294202a9d93e55879a6f61d48.jpg",
+              "description": null,
+              "type": "game",
+              "score": 4.83,
+              "added_at": "2026-01-10T16:23:39.734Z"
+            }
+          ],
+          "plan_to_play": []
+        }
+      },
+      "favorites": {
+        "movies": [],
+        "series": [],
+        "animes": [],
+        "manga": [],
+        "novels": [],
+        "games": []
+      },
+      "progress": {
+        "movies": {},
+        "series": {},
+        "animes": {},
+        "manga": {},
+        "novels": {},
+        "games": {}
+      }
+    }
+  ]
+}

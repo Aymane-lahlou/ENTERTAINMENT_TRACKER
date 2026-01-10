@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title>
+
+  <!-- Minified version -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
+  <!-- Un-Minified version -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+
+<body>
+
+  <body>
+
+  </body>
+
+  <form id="loginForm">
+    <h2>Login</h2>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <!-- Note: Backend expects email, changed from username to email input if needed, or update backend to accept username. 
+         Backend auth.js uses email to find user. So let's use email here. I'll change the label/id too. -->
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="submit">Login</button>
+
+    <div class="extras">
+      <label>
+        <input type="checkbox" name="remember"> Remember Me
+      </label>
+      <a href="">Forgot Password?</a>
+    </div>
+  </form>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(`${API_BASE}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+
+        if (response.ok) {
+          localStorage.setItem('token', result.token);
+          localStorage.setItem('user', JSON.stringify(result.user));
+          // Redirect to home. Assuming structure: root/pages/auth/login.html -> root/pages/home.html
+          window.location.href = '../home.html';
+        } else {
+          alert(result.message || 'Login failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred');
+      }
+    });
+  </script>
+
+
+  <div>
+    Don't have an account? <a href="signup.html">Sign Up</a>
+  </div>
+  </div>
+
+</body>
+
+</html>

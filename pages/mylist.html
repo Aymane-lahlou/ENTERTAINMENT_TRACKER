@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal List</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Your styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-top: 20px;">My Personal Library</h1>
+
+        <!-- ===== MOVIES ===== -->
+        <section class="media-section">
+            <div class="section-header">
+                <h2>Movies</h2>
+            </div>
+            <div class="media-row" id="row-movies"></div>
+        </section>
+
+        <!-- ===== SERIES ===== -->
+        <section class="media-section">
+            <div class="section-header">
+                <h2>Series</h2>
+            </div>
+            <div class="media-row" id="row-series"></div>
+        </section>
+
+        <!-- ===== ANIMES ===== -->
+        <section class="media-section">
+            <div class="section-header">
+                <h2>Animes</h2>
+            </div>
+            <div class="media-row" id="row-animes"></div>
+        </section>
+
+        <!-- ===== MANGA ===== -->
+        <section class="media-section">
+            <div class="section-header">
+                <h2>Manga</h2>
+            </div>
+            <div class="media-row" id="row-manga"></div>
+        </section>
+
+        <!-- ===== NOVELS ===== -->
+        <section class="media-section">
+            <div class="section-header">
+                <h2>Novels</h2>
+            </div>
+            <div class="media-row" id="row-novels"></div>
+        </section>
+
+        <!-- ===== GAMES ===== -->
+        <section class="media-section">
+            <div class="section-header">
+                <h2>Games</h2>
+            </div>
+            <div class="media-row" id="row-games"></div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="/assets/js/app.js"></script>
+    <script>
+        // Navbar/Footer Loading
+        fetch("/components/navbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("navbar-container").innerHTML = html;
+                if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+            });
+
+        fetch("/components/footer.html")
+            .then(res => res.text())
+            .then(html => document.getElementById("footer-container").innerHTML = html);
+
+        // Dashboard Logic
+        window.loadMyList = async function () {
+            try {
+                const res = await fetch(`${API_BASE}/list`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.href = '/pages/auth/login.html';
+                    return;
+                }
+
+                const lists = await res.json();
+
+                const sections = [
+                    { id: 'movies', title: 'Movies' },
+                    { id: 'series', title: 'Series' },
+                    { id: 'animes', title: 'Animes' },
+                    { id: 'manga', title: 'Manga' },
+                    { id: 'novels', title: 'Novels' },
+                    { id: 'games', title: 'Games' }
+                ];
+
+                for (const sec of sections) {
+                    // We use specific IDs for rows in this page for easier selection
+                    const row = document.getElementById(`row-${sec.id}`);
+                    if (row) {
+                        row.innerHTML = '';
+                        const categoryKey = sec.id;
+                        let hasItems = false;
+
+                        if (lists[categoryKey]) {
+                            Object.keys(lists[categoryKey]).forEach(status => {
+                                lists[categoryKey][status].forEach(item => {
+                                    hasItems = true;
+                                    const card = createMediaCard(item, categoryKey, true, status);
+                                    row.appendChild(card);
+                                });
+                            });
+                        }
+
+                        if (!hasItems) {
+                            row.innerHTML = '<p style="color: #666; font-style: italic; padding: 10px;">No items in your list.</p>';
+                        }
+                    }
+                }
+
+            } catch (e) {
+                console.error('Error loading list:', e);
+            }
+        }
+
+        // Initial Load
+        loadMyList();
+
+    </script>
+
+</body>
+
+</html>
