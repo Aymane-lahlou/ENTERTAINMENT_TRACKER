@@ -227,7 +227,7 @@ window.deleteItem = async function (type, id) {
 window.loadTrending = async function (category, rowId) {
   const row = document.getElementById(rowId);
   if (!row) return;
-  row.innerHTML = 'Loading famous things...';
+  row.innerHTML = 'Loading trending...';
 
   // Map frontend category to API type
   let apiType = category;
@@ -237,14 +237,14 @@ window.loadTrending = async function (category, rowId) {
   if (category === 'novels') apiType = 'novel';
 
   try {
-    const res = await fetch(`${API_BASE}/search/trending/${apiType}`, {
+    const res = await fetch(`${API_BASE}/search/trending/${apiType}?t=${Date.now()}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const data = await res.json();
     row.innerHTML = '';
 
     if (data.length === 0) {
-      row.innerHTML = 'No trending items found.';
+      row.innerHTML = 'No trending items found (Check API Quotas).';
       return;
     }
 
