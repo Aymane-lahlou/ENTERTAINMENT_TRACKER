@@ -134,7 +134,25 @@
   border-radius: 14px;
   border: 1px solid var(--stroke);
   box-shadow: var(--shadow);
-  overflow: hidden;
+}
+
+.dropdown-content::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+.dropdown-content a:first-child {
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.dropdown-content a:last-child {
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
 }
 
 .dropdown-content a {
