@@ -1,10 +1,23 @@
 # 🎬 Entertainment Tracker
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-2ea44f)](https://entertainment.lahlou.tech)
+
 **Entertainment Tracker** is a comprehensive, all-in-one personal media library application designed to help users track, organize, and analyze their consumption of various entertainment media. Whether it's movies, TV series, anime, manga, novels, or video games, this application provides a centralized hub to manage it all.
+
+👉 **Live Website:** [entertainment.lahlou.tech](https://entertainment.lahlou.tech)
+
+
+## 🏠 Why Self-Host?
 
 > **Stop relying on external services like Trakt or MAL.** Take control of your data and self-host your own comprehensive media tracker.
 
+This project is built for those who value digital sovereignty. By self-hosting **Entertainment Tracker**, you ensure:
+*   **Total Privacy**: Your consumption data stays on your machine. No tracking, no ads, no algorithms.
+*   **Data Ownership**: You are not at the mercy of a third-party service shutting down or changing its terms.
+*   **Customizability**: Modify the code, database, and features to fit your exact needs.
+
 Built with a focus on user experience and visual analytics, it offers sophisticated tracking capabilities.
+
 
 ## ✨ Key Features
 
@@ -49,7 +62,7 @@ Follow these steps to run the project locally:
 1.  **Prerequisites**: Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
 2.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/entertainment-tracker.git
+    git clone https://github.com/JAWAD4HAM/entertainment-tracker.git
     cd entertainment-tracker
     ```
 3.  **Install Dependencies**:
