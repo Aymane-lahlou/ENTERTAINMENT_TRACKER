@@ -37,7 +37,7 @@ router.get('/:type', async (req, res) => {
             // MIX: Filter for Novel and Light Novel if searching for 'novel'
             if (type === 'novel') {
                 rawData = rawData.filter(item =>
-                    item.type === 'Novel' || item.type === 'Light Novel'
+                    item.type === 'Novel' || item.type === 'Light Novel' || item.type === 'Novel'
                 );
             }
 
