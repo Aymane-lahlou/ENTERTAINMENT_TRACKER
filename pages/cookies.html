@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy | Entertainment Tracker</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <style>
+        .legal-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            background: var(--panel);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-soft);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: var(--brand-2);
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--ink);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <div class="legal-container">
+            <h1>Cookie Policy</h1>
+            <p>Last updated: January 2026</p>
+
+            <h2>1. What Are Cookies</h2>
+            <p>Cookies are small text files that are placed on your computer or mobile device when you visit a website.
+                They are widely used to make websites work more efficiently and provide information to the owners of the
+                site.</p>
+
+            <h2>2. How We Use Cookies</h2>
+            <p>We use cookies primarily for authentication purposes. When you log in, we store a token in your browser's
+                local storage or cookies to keep you logged in as you navigate between pages.</p>
+
+            <h2>3. Third-Party Cookies</h2>
+            <p>We do not use third-party tracking cookies or advertising cookies. Our externa API providers (TMDB,
+                Jikan, RAWG) do not set cookies on your browser through our site.</p>
+
+            <h2>4. Managing Cookies</h2>
+            <p>You can choose to disable cookies through your browser settings, but please note that this may affect
+                your ability to log in and use our services.</p>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="/assets/js/app.js"></script>
+    <script>
+        fetch("/components/navbar.html").then(r => r.text()).then(h => {
+            document.getElementById("navbar-container").innerHTML = h;
+            if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+        });
+        fetch("/components/footer.html").then(r => r.text()).then(h => document.getElementById("footer-container").innerHTML = h);
+    </script>
+</body>
+
+</html>

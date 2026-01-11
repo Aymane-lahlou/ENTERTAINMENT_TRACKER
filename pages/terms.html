@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Entertainment Tracker</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <style>
+        .legal-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            background: var(--panel);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-soft);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: var(--brand-2);
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--ink);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <div class="legal-container">
+            <h1>Terms of Service</h1>
+            <p>Last updated: January 2026</p>
+
+            <h2>1. Agreement to Terms</h2>
+            <p>By accessing our website, you agree to be bound by these Terms of Service and to comply with all
+                applicable laws and regulations.</p>
+
+            <h2>2. User Accounts</h2>
+            <p>To access certain features, you must create an account. You are responsible for maintaining the
+                confidentiality of your account credentials and for all activities that occur under your account.</p>
+
+            <h2>3. Acceptable Use</h2>
+            <p>You agree not to use the website for any unlawful purpose or in any way that interrupts, damages, or
+                impairs the service. You may not attempt to gain unauthorized access to our servers or user data.</p>
+
+            <h2>4. Limitation of Liability</h2>
+            <p>Entertainment Tracker is provided "as is". We make no warranties, expressed or implied, and hereby
+                disclaim and negate all other warranties.</p>
+
+            <h2>5. Changes to Terms</h2>
+            <p>We reserve the right to modify these terms at any time. We will notify users of any significant changes.
+            </p>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="/assets/js/app.js"></script>
+    <script>
+        fetch("/components/navbar.html").then(r => r.text()).then(h => {
+            document.getElementById("navbar-container").innerHTML = h;
+            if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+        });
+        fetch("/components/footer.html").then(r => r.text()).then(h => document.getElementById("footer-container").innerHTML = h);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Entertainment Tracker</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <style>
+        .about-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: 40px;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            color: var(--ink);
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--brand-2);
+        }
+
+        .content-section p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .comparison-box {
+            background: var(--panel);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-soft);
+            margin-top: 40px;
+        }
+
+        .highlight {
+            color: var(--brand);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="container">
+
+        <div class="about-hero">
+            <h1>About Us</h1>
+            <p>Your privacy is our priority. Track what you love, without the tracking pixels.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Mission</h2>
+            <p>
+                Entertainment Tracker was built with a simple goal: to provide a beautiful, seamless way to track your
+                movies, shows, anime, and games without compromising your digital privacy. In an age where every click
+                is monetized, we believe your personal taste is just that—personal.
+            </p>
+
+            <div class="comparison-box">
+                <h2>Why We Are Different</h2>
+                <p>
+                    Many popular tracking services, like <span class="highlight">Trakt</span>, often rely on extensive
+                    data collection, third-party analytics, and advertising networks to monetize your viewing habits.
+                    They build detailed profiles of your consumption to sell to advertisers.
+                </p>
+                <p>
+                    <strong>We don't do that.</strong>
+                </p>
+                <p>
+                    Entertainment Tracker is a self-contained ecosystem. We do not sell your data, we do not use
+                    invasive tracking pixels, and we do not serve targeted ads based on your library. Your lists are
+                    stored securely and used solely for your own organization and statistics.
+                </p>
+            </div>
+
+            <br>
+            <h2>Privacy First</h2>
+            <p>
+                We believe that what you watch in the privacy of your home shouldn't be broadcast to data brokers. Our
+                platform is designed to be minimal, efficient, and respectful of your digital footprint. Enjoy your
+                entertainment with peace of mind.
+            </p>
+        </div>
+
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="/assets/js/app.js"></script>
+    <script>
+        fetch("/components/navbar.html").then(r => r.text()).then(h => {
+            document.getElementById("navbar-container").innerHTML = h;
+            if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+        });
+        fetch("/components/footer.html").then(r => r.text()).then(h => document.getElementById("footer-container").innerHTML = h);
+    </script>
+</body>
+
+</html>

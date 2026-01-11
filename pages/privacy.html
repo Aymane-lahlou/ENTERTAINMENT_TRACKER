@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Entertainment Tracker</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <style>
+        .legal-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            background: var(--panel);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-soft);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: var(--brand-2);
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--ink);
+            opacity: 0.9;
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            color: var(--ink);
+            opacity: 0.9;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <div class="legal-container">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: January 2026</p>
+
+            <h2>1. Introduction</h2>
+            <p>Welcome to Entertainment Tracker. We respect your privacy and are committed to protecting your personal
+                data. This privacy policy will inform you as to how we look after your personal data when you visit our
+                website and tell you about your privacy rights and how the law protects you.</p>
+
+            <h2>2. Data We Collect</h2>
+            <p>We collect only the essential data needed to provide our services:</p>
+            <ul>
+                <li><strong>Account Data:</strong> Username and email address provided during registration.</li>
+                <li><strong>Usage Data:</strong> Information about your lists (movies, books, games you add) and your
+                    progress.</li>
+            </ul>
+
+            <h2>3. How We Use Your Data</h2>
+            <p>We use your data solely to:</p>
+            <ul>
+                <li>Maintain your user account.</li>
+                <li>Store and retrieve your personal entertainment lists.</li>
+                <li>Generate personal statistics for your viewing habits.</li>
+            </ul>
+            <p><strong>We do NOT sell your data to third parties or advertisers.</strong></p>
+
+            <h2>4. Data Storage</h2>
+            <p>Your data is stored securely on our servers. We implement appropriate security measures to prevent your
+                personal data from being accidentally lost, used, or accessed in an unauthorized way.</p>
+
+            <h2>5. Your Rights</h2>
+            <p>You have the right to request access to your data, correction of your data, or deletion of your account
+                at any time.</p>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="/assets/js/app.js"></script>
+    <script>
+        fetch("/components/navbar.html").then(r => r.text()).then(h => {
+            document.getElementById("navbar-container").innerHTML = h;
+            if (window.setupNavbarInteractions) window.setupNavbarInteractions();
+        });
+        fetch("/components/footer.html").then(r => r.text()).then(h => document.getElementById("footer-container").innerHTML = h);
+    </script>
+</body>
+
+</html>
